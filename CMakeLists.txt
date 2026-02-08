@@ -24,6 +24,11 @@ add_executable(to-do-app
     apps/desktop/MainWindow.ui
 )
 
+target_include_directories(to-do-app
+    PRIVATE ${CMAKE_SOURCE_DIR}
+)
+
 target_link_libraries(to-do-app
     PRIVATE Qt6::Widgets
+    PRIVATE core_domain
 )
