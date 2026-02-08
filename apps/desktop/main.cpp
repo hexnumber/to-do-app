@@ -1,6 +1,7 @@
 #include <QApplication>
 
 #include "MainWindow.h"
+#include "core/domain/Habit.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,6 +9,10 @@ int main(int argc, char *argv[])
 
 	MainWindow window;
 	window.show();
+
+	//test objects
+	Habit gym("gym");
+	gym.AddCheckIn(HabitCheckIn(QDate::currentDate()));
 
 	return app.exec();
 }
