@@ -1,6 +1,4 @@
 #include "MainWindow.h"
-#include <QHBoxLayout>
-#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

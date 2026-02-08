@@ -3,6 +3,8 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QPushButton>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 class MainWindow : public QMainWindow
 {
