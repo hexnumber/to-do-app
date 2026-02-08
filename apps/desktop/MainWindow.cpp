@@ -1,6 +1,4 @@
 #include "MainWindow.h"
-#include <QHBoxLayout>
-#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -46,6 +44,64 @@ void MainWindow::setupUI()
         "}"
     );
     connect(dashboardBtn, &QPushButton::clicked, this, &MainWindow::showDashboard);
+
+    auto *habitsBtn = new QPushButton("Habits ▼");
+    habitsBtn->setFixedHeight(40);
+    habitsBtn->setStyleSheet(
+        "QPushButton { "
+        "  background-color: #34495e; "
+        "  color: white; "
+        "  border: none; "
+        "  border-radius: 5px; "
+        "  font-size: 14px; "
+        "  text-align: left; "
+        "  padding-left: 15px; "
+        "} "
+        "QPushButton:hover { "
+        "  background-color: #3d566e; "
+        "}"
+    );
+    connect(habitsBtn, &QPushButton::clicked, this, &MainWindow::toggleHabits);
+
+    habit1Btn = new QPushButton("  Habit 1");
+    habit1Btn->setFixedHeight(35);
+    habit1Btn->setStyleSheet(
+        "QPushButton { "
+        "  background-color: #1a252f; "
+        "  color: #bdc3c7; "
+        "  border: none; "
+        "  border-radius: 3px; "
+        "  font-size: 13px; "
+        "  text-align: left; "
+        "  padding-left: 25px; "
+        "} "
+        "QPushButton:hover { "
+        "  background-color: #34495e; "
+        "  color: white; "
+        "}"
+    );
+    habit1Btn->hide();
+    connect(habit1Btn, &QPushButton::clicked, this, &MainWindow::showHabit1);
+
+    habit2Btn = new QPushButton("  Habit 2");
+    habit2Btn->setFixedHeight(35);
+    habit2Btn->setStyleSheet(
+        "QPushButton { "
+        "  background-color: #1a252f; "
+        "  color: #bdc3c7; "
+        "  border: none; "
+        "  border-radius: 3px; "
+        "  font-size: 13px; "
+        "  text-align: left; "
+        "  padding-left: 25px; "
+        "} "
+        "QPushButton:hover { "
+        "  background-color: #34495e; "
+        "  color: white; "
+        "}"
+    );
+    habit2Btn->hide();
+    connect(habit2Btn, &QPushButton::clicked, this, &MainWindow::showHabit2);
 
     auto *goalsBtn = new QPushButton("Goals ▼");
     goalsBtn->setFixedHeight(40);
@@ -124,6 +180,9 @@ void MainWindow::setupUI()
     connect(profileBtn, &QPushButton::clicked, this, &MainWindow::showProfile);
 
     sidebarLayout->addWidget(dashboardBtn);
+    sidebarLayout->addWidget(habitsBtn);
+    sidebarLayout->addWidget(habit1Btn);
+    sidebarLayout->addWidget(habit2Btn);
     sidebarLayout->addWidget(goalsBtn);
     sidebarLayout->addWidget(goal1Btn);
     sidebarLayout->addWidget(goal2Btn);
@@ -161,6 +220,14 @@ void MainWindow::showDashboard()
     contentLabel->setText("Dashboard Content\n\nView your productivity statistics and recent activity here.");
 }
 
+void MainWindow::toggleHabits()
+{
+    habitsExpanded = !habitsExpanded;
+    habit1Btn->setVisible(habitsExpanded);
+    habit2Btn->setVisible(habitsExpanded);
+    
+}
+
 void MainWindow::toggleGoals()
 {
     goalsExpanded = !goalsExpanded;
@@ -171,6 +238,16 @@ void MainWindow::toggleGoals()
 void MainWindow::showProfile()
 {
     contentLabel->setText("Profile\n\nManage your profile information and preferences.");
+}
+
+void MainWindow::showHabit1()
+{
+    contentLabel->setText("Habit 1\n\nView and manage your first habit.");
+}
+
+void MainWindow::showHabit2()
+{
+    contentLabel->setText("Habit 2\n\nView and manage your second habit.");
 }
 
 void MainWindow::showGoal1()
