@@ -15,6 +15,8 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
+add_subdirectory(core/domain)
+
 add_executable(to-do-app
     apps/desktop/main.cpp
     apps/desktop/MainWindow.cpp
